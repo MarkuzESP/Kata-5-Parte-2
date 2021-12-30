@@ -6,14 +6,13 @@ import kata5Model.Histogram;
 import kata5Model.Mail;
 import kata5View.HistogramDisplay;
 import kata5View.MailHistogramBuilder;
-import kata5View.MailListReader;
+import kata5View.MailListReaderDB;
 
 /**
  * @author Marcos del Cristo Díaz Gil
  * Ingeniería del Software 2, Universidad de las Palmas de Gran Canaria
  */
 public class Controller {
-    private String fileRoute;
     private List<Mail> listOfMails;
     private Histogram<String> histogram;
     
@@ -28,11 +27,8 @@ public class Controller {
         output();
     }
 
-    private void input() throws IOException{
-        // Se deja la ruta absoluta del fichero utilizado para la prueba.
-        fileRoute = "C:\\Users\\Usuario\\Desktop\\Proyectos IS2 GitHub\\Kata-5-Parte-2\\email.txt";
-        //C:\Users\Usuario\Desktop\Proyectos IS2 GitHub\Kata-5-Parte-2
-        listOfMails = MailListReader.read(fileRoute);
+    private void input(){
+        listOfMails = new MailListReaderDB().read();
     }
 
     private void process(){
